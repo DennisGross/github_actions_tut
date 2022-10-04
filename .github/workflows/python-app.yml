@@ -31,7 +31,8 @@ jobs:
         sudo bash -c "echo 'deb http://www.lrde.epita.fr/repo/debian/ stable/' >> /etc/apt/sources.list"
         sudo apt-get update
         sudo apt-get -y install spot libspot-dev spot-doc python3-spot
-        sudo apt-get update -qq && sudo apt-get install -y --no-install-recommends maven uuid-dev python3 virtualenv
+        sudo apt-get update -qq
+        sudo apt-get install -y --no-install-recommends maven uuid-dev python3 virtualenv
     - name: Storm
       run: |
         git clone https://github.com/moves-rwth/storm.git

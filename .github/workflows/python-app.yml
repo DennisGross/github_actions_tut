@@ -26,12 +26,6 @@ jobs:
     - name: Install system dependencies
       run: |
         sudo apt-get -y install build-essential git cmake libboost-all-dev libcln-dev libgmp-dev libginac-dev automake libglpk-dev libhwloc-dev libz3-dev libxerces-c-dev libeigen3-dev
-        wget -q - https://www.lrde.epita.fr/repo/debian.gpg
-        sudo apt-key add debian.gpg
-        sudo bash -c "echo 'deb http://www.lrde.epita.fr/repo/debian/ stable/' >> /etc/apt/sources.list"
-        sudo apt-get update
-        sudo apt-get -y install spot libspot-dev spot-doc python3-spot
-        sudo apt-get update -qq
         
     - name: Storm
       run: |

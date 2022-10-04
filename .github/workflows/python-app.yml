@@ -23,13 +23,16 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
-    - name: Other stuff
+    - name: Install system dependencies
       run: |
         sudo apt-get -y install build-essential git cmake libboost-all-dev libcln-dev libgmp-dev libginac-dev automake libglpk-dev libhwloc-dev libz3-dev libxerces-c-dev libeigen3-dev
-        wget -q -O - https://www.lrde.epita.fr/repo/debian.gpg | apt-key add -
-        echo 'deb http://www.lrde.epita.fr/repo/debian/ stable/' >> /etc/apt/sources.list
+        wget -q -O - https://www.lrde.epita.fr/repo/debian.gpg | sudo apt-key add -
+        sudo echo 'deb http://www.lrde.epita.fr/repo/debian/ stable/' >> /etc/apt/sources.list
         sudo apt-get update
         sudo apt-get -y install spot libspot-dev spot-doc python3-spot
+        sudo apt-get update -qq && sudo apt-get install -y --no-install-recommends maven uuid-dev python3 virtualenv
+    - name: Storm
+      run: |
         git clone https://github.com/moves-rwth/storm.git
         cd storm
         mkdir build

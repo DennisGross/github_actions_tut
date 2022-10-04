@@ -5,4 +5,4 @@ def fib(n: int) -> int:
     return fib(n-2) + fib(n-1)
 
 def test_fibonacci():
-    assert fib(0) == 0
+    assert fib(0) == 10

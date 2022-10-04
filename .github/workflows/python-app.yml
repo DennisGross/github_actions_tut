@@ -29,12 +29,25 @@ jobs:
         
     - name: Storm
       run: |
+        cd ~
         git clone https://github.com/moves-rwth/storm.git
         cd storm
         mkdir build
         cd build
         cmake ..
         make
+    - name: PyCarl
+      run: |
+        cd ~
+        git clone https://github.com/moves-rwth/pycarl.git
+        cd pycarl
+        sudo python setup.py build_ext develop
+    - name: Stormpy
+      run: |
+        cd ~
+        git clone https://github.com/moves-rwth/stormpy.git
+        cd stormpy
+        sudo python setup.py build_ex --storm-dir ~/storm/build/ develop
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
